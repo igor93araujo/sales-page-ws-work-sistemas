@@ -11,6 +11,7 @@ export function AppProvider({ children }) {
   const [bannerItem, setBannerItem] = useState({});
   const [categories, setCategories] = useState([]);
   const [productId, setProductId] = useState('MLB5672');
+  const [showLogin, setShowLogin] = useState(false);
 
   const getCategoriesList = async() => {
     const categories = await getCategories();
@@ -44,7 +45,9 @@ export function AppProvider({ children }) {
       productId,
       setProductId,
       bannerItem, 
-      setBannerItem
+      setBannerItem,
+      showLogin,
+      setShowLogin
     }),
     [
       products,
@@ -59,7 +62,9 @@ export function AppProvider({ children }) {
       productId,
       setProductId,
       bannerItem, 
-      setBannerItem
+      setBannerItem,
+      showLogin,
+      setShowLogin
     ],
   );
 

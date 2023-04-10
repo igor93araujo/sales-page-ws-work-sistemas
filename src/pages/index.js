@@ -4,11 +4,10 @@ import Carrosel from '@/components/Carrosel'
 import Categories from '@/components/Categories'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
+import LoginAdm from '@/components/LoginAdm'
 import { AppProvider } from '@/context/AppProvider'
 import { getCategories } from '@/services/api'
 import Head from 'next/head'
-import { useEffect, useState } from 'react'
-
 
 export default function Home() {
 
@@ -29,6 +28,7 @@ export default function Home() {
             <Carrosel />
             <BottomProducts />
           </section>
+          <LoginAdm />
           <Footer />
         </div>
       </section>
