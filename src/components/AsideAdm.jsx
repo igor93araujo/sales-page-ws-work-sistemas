@@ -4,11 +4,11 @@ export default function AsideAdm() {
   
   return (
     <aside>
-          <h2>Products</h2>
+          <h2>Produtos</h2>
           <ul>
-            <li>Company Profile</li>
+            <li>Perfil da empresa</li>
             <Link href='/'>
-              <li>Logout</li>
+              <li>Sair</li>
             </Link>
           </ul>
      </aside>

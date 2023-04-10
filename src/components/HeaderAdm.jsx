@@ -4,7 +4,7 @@ import ProductsListAdm from './ProductsListAdm';
 export default function HeaderAdm() {
   return (
     <><header>
-      <h1>My products Admin</h1>
+      <h1>Administração de produtos</h1>
     </header>
     <section className='mainPage'>
         <AsideAdm />

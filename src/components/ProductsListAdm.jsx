@@ -55,12 +55,12 @@ export default function ProductsListAdm() {
           style={
             {textDecoration: 'underline', fontSize: '1.5rem'}
           }
-        >List of Products</h1>
+        >Lista de produtos</h1>
         <button 
           type='button'
           onClick={() => setShowAddProduct(!showAddProduct)}
           className='addBtn'
-        > + New 
+        > + Novo 
         </button>
       </div>
       <div>
@@ -77,7 +77,7 @@ export default function ProductsListAdm() {
                     onClick={() => setEditingProduct(product)}
                     className='editBtn'
                   >
-                    Edit
+                    Editar
                   </button>
                     <button
                       type='button'
@@ -99,7 +99,7 @@ export default function ProductsListAdm() {
       {
         showAddProduct &&
       <form className='addProductForm' >
-        <label htmlFor="product">Product</label>
+        <label htmlFor="product">Produto</label>
         <input
           type="text"
           name="product"
@@ -108,7 +108,7 @@ export default function ProductsListAdm() {
             (e) => setProductName(e.target.value)
           }
           />
-        <label htmlFor="price">Price</label>
+        <label htmlFor="price">Preço</label>
         <input
           type="text"
           name="price"
@@ -116,19 +116,20 @@ export default function ProductsListAdm() {
           onChange={
             (e) => setProductPrice(e.target.value)
           }
+          disabled={!productName}
         />
         <button
           type="button"
           onClick={() => addProductToList()}
         >
-        Save
+        Salvar
         </button        >
       </form>
       }
 {
   editingProduct ? (
     <form className='addProductForm'>
-      <label htmlFor="product">Product</label>
+      <label htmlFor="product">Produto</label>
       <input
         type="text"
         name="product"
@@ -136,7 +137,7 @@ export default function ProductsListAdm() {
         value={productName}
         onChange={(e) => setProductName(e.target.value)}
       />
-      <label htmlFor="price">Price</label>
+      <label htmlFor="price">Preço</label>
       <input
         type="text"
         name="price"
@@ -144,11 +145,15 @@ export default function ProductsListAdm() {
         value={productPrice}
         onChange={(e) => setProductPrice(e.target.value)}
       />
-      <button type="button" onClick={saveProduct}>
-        Save
+      <button
+        type="button"
+        onClick={saveProduct}
+        disabled={!productName && !productPrice}
+      >
+        Salvar
       </button>
       <button type="button" onClick={cancelEdit}>
-        Cancel
+        Cancelar
       </button>
     </form>
   ) : null
