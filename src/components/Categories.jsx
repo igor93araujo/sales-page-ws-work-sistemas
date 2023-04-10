@@ -1,34 +1,30 @@
-import { useEffect, useState } from 'react';
+import { AppContext } from '@/context/AppContext';
+import { getProductsFromCategory } from '@/services/api';
+import { useContext } from 'react';
 
 
 export default function Categories() {
 
-  const [categories, setCategories] = useState([]);
-
-  const getCategories = async () => {
-    const endPoint = 'https://api.mercadolibre.com/sites/MLB/categories';
-    const response = await fetch(endPoint);
-    const data = await response.json();
-    setCategories(data);
+  const { setProducts, setLoading, categories } = useContext(AppContext);
+ 
+  const showProducts = async (id) => {
+    const products = await getProductsFromCategory(id)
+    setProducts(products)
+    setLoading(false)
   };
-
-  useEffect(() => {
-    getCategories();
-  }, []);
-
-
+  
   return (
     <aside>
-          <p>Categorias</p>
+          <h2>Categorias</h2>
           <ul>
             {
               categories.map((category) => (
                 <li
                   key={category.id}
-                  onClick={ () => { console.log(category.id) } }
+                  onClick={ () => showProducts(category.id)}
                   className='category'
                 >
-                  {category.name}
+                  {`- ${category.name}`}
                 </li>
               ))
             }
