@@ -180,6 +180,7 @@ footer {
 
 .left-item {
   display: flex;
+  gap: 10%;
 }
 
 .middleLine {

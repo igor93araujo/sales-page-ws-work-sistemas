@@ -12,7 +12,7 @@ export default function Header() {
 
   return (
     <header>
-      <h1>My products</h1>
+      <h1>WS Shop 🛍️</h1>
       <RiAdminLine
         className='admIcon'
         onClick={ handleLogin }
