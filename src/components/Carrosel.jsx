@@ -7,7 +7,7 @@ import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 
 export default function Carrosel() {
 
-  const { carrosselProducts, setCarrosselProducts, products, setBannerItem} = useContext(AppContext);
+  const { carrosselProducts, setCarrosselProducts, products, setBannerItem, loading} = useContext(AppContext);
 
   const { results } = products;
 
@@ -44,6 +44,7 @@ export default function Carrosel() {
         <BsChevronCompactLeft className="leftArrow" onClick={ handleLeftArrow } style={{fontSize: 50}} />
         <div className='innerCarrosel'>
       {
+        loading ? <p>Loading...</p> :
           carrosselProducts.map((product) => (
             <div
               key={ product.id }

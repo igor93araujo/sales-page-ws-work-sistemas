@@ -5,7 +5,7 @@ import React, { useContext, useEffect } from 'react'
 export default function BottomProducts() {
 
 
-  const { products } = useContext(AppContext);
+  const { products, loading } = useContext(AppContext);
 
   const { results } = products;
 
@@ -24,6 +24,7 @@ export default function BottomProducts() {
     <div className='bottom-section'>
       <div className='bottom-product'>
         {
+          loading ? <p>Loading...</p> :
         results !== undefined &&
         <div className='left-item'>
             <Image
@@ -49,6 +50,7 @@ export default function BottomProducts() {
     <div className='middleLine'></div>
     <div className='bottom-product'>
       {
+        loading ? <p>Loading...</p> :
       results !== undefined &&
       <div className='left-item'>
           <Image
