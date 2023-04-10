@@ -1,7 +1,8 @@
 import React from 'react'
 
 export default function ProductsListAdm() {
-  const [todos, setTodos] = React.useState([])
+  const [products, setProducts] = React.useState([])
+  //trocar todos por products e setTodos por setProducts
   const [newTodo, setNewTodo] = React.useState('')
   const [ showAddProduct, setShowAddProduct ] = React.useState(false)
   const [ productName, setProductName ] = React.useState('')
@@ -14,18 +15,18 @@ export default function ProductsListAdm() {
       product: productName,
       price: productPrice
     }
-    setTodos([...todos, newProduct])
+    setProducts([...products, newProduct])
     setShowAddProduct(false)
   }
 
   const saveProduct = () => {
-    const newTodos = todos.map((todo) => {
-      if (todo.product === editingProduct.product) {
-        return { ...todo, product: productName, price: productPrice }
+    const newProducts = products.map((item) => {
+      if (item.product === editingProduct.product) {
+        return { ...item, product: productName, price: productPrice }
       }
-      return todo
+      return item
     })
-    setTodos(newTodos)
+    setProducts(newProducts)
     setEditingProduct(null)
     setProductName('')
     setProductPrice('')
@@ -66,14 +67,14 @@ export default function ProductsListAdm() {
         <table>
           <tbody>
             {
-              todos.map((todo) => (
-                <tr key={todo.product}>
-                  <td className='productName'>{todo.product}</td>
-                  <td className='productPrice'>{` $ ${todo.price}`}</td>
+              products.map((product) => (
+                <tr key={product.product}>
+                  <td className='productName'>{product.product}</td>
+                  <td className='productPrice'>{` $ ${product.price}`}</td>
                   <td className='productBtns'>
                   <button
                     type="button"
-                    onClick={() => setEditingProduct(todo)}
+                    onClick={() => setEditingProduct(product)}
                     className='editBtn'
                   >
                     Edit
@@ -82,8 +83,8 @@ export default function ProductsListAdm() {
                       type='button'
                       onClick={
                         () => {
-                          const newTodos = todos.filter((item) => item.product !== todo.product)
-                          setTodos(newTodos)
+                          const newProducts = products.filter((item) => item.product !== product.product)
+                          setProducts(newProducts)
                         }
                       }
                       className='deleteBtn'
@@ -97,7 +98,7 @@ export default function ProductsListAdm() {
       </div>
       {
         showAddProduct &&
-      <form >
+      <form className='addProductForm' >
         <label htmlFor="product">Product</label>
         <input
           type="text"
@@ -121,12 +122,12 @@ export default function ProductsListAdm() {
           onClick={() => addProductToList()}
         >
         Save
-        </button>
+        </button        >
       </form>
       }
 {
   editingProduct ? (
-    <form>
+    <form className='addProductForm'>
       <label htmlFor="product">Product</label>
       <input
         type="text"
@@ -150,15 +151,8 @@ export default function ProductsListAdm() {
         Cancel
       </button>
     </form>
-  ) : (
-    showAddProduct && (
-      <form>
-        {/* ... */}
-      </form>
-    )
-  )
+  ) : null
 }
-
     </section>
   )
 }
