@@ -25,7 +25,6 @@ export default function LoginAdm() {
     return true
   }
 
-
   return (
     <div>
     {
