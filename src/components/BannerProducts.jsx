@@ -28,17 +28,18 @@ export default function BannerProducts() {
             }
             alt='product'
             width="200"
-            height="200" /><div>
+            height="200" />
+            <div>
+              <h1>
+                {
+                  results !== undefined && `$ ${bannerItem.price}`
+                }
+              </h1>
               <h2>
                 {
                   results !== undefined && bannerItem.title
                 }
               </h2>
-              <h3>
-                {
-                  results !== undefined && `$ ${bannerItem.price}`
-                }
-              </h3>
               <button>Comprar</button>
             </div></>
      }

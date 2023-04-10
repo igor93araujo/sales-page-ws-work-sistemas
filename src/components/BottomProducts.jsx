@@ -22,30 +22,30 @@ export default function BottomProducts() {
 
   return (
     <div className='bottom-section'>
-    <div className='bottom-product'>
-      {
-      results !== undefined &&
-      <div className='left-item'>
-          <Image
-            src={
-              results[0].thumbnail
-            }
-            alt='product'
-            width="200"
-            height="300"
-          />
-        <div>
-          <p>{`Apenas ${results[0].price}`}</p>
-          <p>
-            {
-              results[0].title
-            }
-            </p>
+      <div className='bottom-product'>
+        {
+        results !== undefined &&
+        <div className='left-item'>
+            <Image
+              src={
+                results[0].thumbnail
+              }
+              alt='product'
+              width="200"
+              height="200"
+            />
+          <div>
+            <h2>{`Apenas $ ${results[0].price}`}</h2>
+            <p>
+              {
+                results[0].title
+              }
+              </p>
+          </div>
         </div>
+        }
+          <button>Comprar</button>
       </div>
-      }
-        <button>Comprar</button>
-    </div>
     <div className='middleLine'></div>
     <div className='bottom-product'>
       {
@@ -57,19 +57,26 @@ export default function BottomProducts() {
             }
             alt='product'
             width="200"
-            height="300"
+            height="200"
           />
         <div>
-          <p>{`Apenas ${results[5].price}`}</p>
+          <h2>{`Apenas $ ${results[5].price}`}</h2>
           <p>
             {
               results[5].title
             }
             </p>
+            <p>
+              Clique <a href={
+                results[5].permalink
+              }>aqui</a> para ver mais detalhes.
+            </p>
         </div>
       </div>
       }
-        <button>Comprar</button>
+        <button style={
+          { color: 'red'}
+        }>Comprar</button>
     </div>
   </div>
   )

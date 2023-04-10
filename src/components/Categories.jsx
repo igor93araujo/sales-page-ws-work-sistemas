@@ -24,7 +24,7 @@ export default function Categories() {
                   onClick={ () => showProducts(category.id)}
                   className='category'
                 >
-                  {category.name}
+                  {`- ${category.name}`}
                 </li>
               ))
             }

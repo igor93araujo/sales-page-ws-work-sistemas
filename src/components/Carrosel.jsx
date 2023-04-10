@@ -53,8 +53,8 @@ export default function Carrosel() {
               <Image
                 src={ product.thumbnail }
                 alt={ product.title }
-                width={ 100 }
-                height={ 100 }
+                width={ 150 }
+                height={ 150 }
               />
               <p>
                 {
