@@ -30,7 +30,7 @@ export default function LoginAdm() {
     {
       showLogin && 
       <form className='loginForm'>
-      <h1>Login</h1>
+      <h1 className='loginTitle'>Login do Administrador</h1>
       <label htmlFor="email">Email</label>
         <input type="email" name="email" id="email" onChange={ handleChange } />
       <label htmlFor="password">Senha</label>

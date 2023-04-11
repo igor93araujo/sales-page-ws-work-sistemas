@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 export default function ProductsListAdm() {
-  const [products, setProducts] = React.useState([])
-  //trocar todos por products e setTodos por setProducts
-  const [newTodo, setNewTodo] = React.useState('')
+
+  let savedProducts = [];
+  typeof window !== 'undefined' && (savedProducts = JSON.parse(localStorage.getItem('products')) )
+  const [products, setProducts] = React.useState(
+    savedProducts|| []
+  ) 
+
   const [ showAddProduct, setShowAddProduct ] = React.useState(false)
   const [ productName, setProductName ] = React.useState('')
   const [ productPrice, setProductPrice ] = React.useState('')
@@ -37,6 +41,16 @@ export default function ProductsListAdm() {
     setProductName('')
     setProductPrice('')
   }
+
+  useEffect(() => {
+   localStorage.setItem('products', JSON.stringify(products))
+  }, [products])
+
+  useEffect(() => {
+    const products = JSON.parse(localStorage.getItem('products'));
+    products && setProducts(products)
+  }, [])
+   
   
    return (
     <section style={
@@ -62,7 +76,39 @@ export default function ProductsListAdm() {
           className='addBtn'
         > + Novo 
         </button>
+        
       </div>
+        
+      {
+        showAddProduct &&
+      <form className='addProductForm' >
+        <label htmlFor="product">Produto</label>
+        <input
+          type="text"
+          name="product"
+          id="product"
+          onChange={
+            (e) => setProductName(e.target.value)
+          }
+          />
+        <label htmlFor="price">Preço</label>
+        <input
+          type="text"
+          name="price"
+          id="price"
+          onChange={
+            (e) => setProductPrice(e.target.value)
+          }
+          disabled={!productName}
+        />
+        <button
+          type="button"
+          onClick={() => addProductToList()}
+        >
+        Salvar
+        </button        >
+      </form>
+      }
       <div>
         <table>
           <tbody>
@@ -96,36 +142,7 @@ export default function ProductsListAdm() {
           </tbody>
         </table>
       </div>
-      {
-        showAddProduct &&
-      <form className='addProductForm' >
-        <label htmlFor="product">Produto</label>
-        <input
-          type="text"
-          name="product"
-          id="product"
-          onChange={
-            (e) => setProductName(e.target.value)
-          }
-          />
-        <label htmlFor="price">Preço</label>
-        <input
-          type="text"
-          name="price"
-          id="price"
-          onChange={
-            (e) => setProductPrice(e.target.value)
-          }
-          disabled={!productName}
-        />
-        <button
-          type="button"
-          onClick={() => addProductToList()}
-        >
-        Salvar
-        </button        >
-      </form>
-      }
+      
 {
   editingProduct ? (
     <form className='addProductForm'>

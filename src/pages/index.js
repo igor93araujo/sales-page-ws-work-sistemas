@@ -29,9 +29,9 @@ export default function Home() {
             <BottomProducts />
           </section>
           <LoginAdm />
-          <Footer />
         </div>
       </section>
+          <Footer />
       </AppProvider>
   )
 }

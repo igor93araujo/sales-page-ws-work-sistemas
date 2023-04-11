@@ -13,6 +13,11 @@ export function AppProvider({ children }) {
   const [productId, setProductId] = useState('MLB5672');
   const [showLogin, setShowLogin] = useState(false);
 
+  const [ showAddProduct, setShowAddProduct ] = useState(false)
+  const [ productName, setProductName ] = useState('')
+  const [ productPrice, setProductPrice ] = useState('')
+  const [editingProduct, setEditingProduct] = useState(null)
+
   const getCategoriesList = async() => {
     const categories = await getCategories();
     setCategories(categories);
