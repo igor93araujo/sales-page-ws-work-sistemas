@@ -7,18 +7,16 @@
 }
 
 .fullPage{
-height: 100vh;
+height: 100%;
 }
 
 .mainPage {
   background-color: #0b2152;
   color: white;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-
 }
 
 header {
@@ -71,8 +69,8 @@ header {
   }
 
 aside {
-  width: fit-content;
-  height: 100%;
+  width: 20%;
+  height: 100vh;
   padding: 30px 20px;
   overflow-y: scroll;
   }
@@ -206,6 +204,7 @@ footer {
   justify-content: center;
   align-items: center;
   padding: 5%;
+  
 }
 
 .bottom-product h2 {
@@ -230,7 +229,6 @@ img {
   background-color: #fafafa;
   color: rgb(0, 0, 0);
   font-weight: 900;
-  font-size: 2rem;
   cursor: pointer;
 }
 
@@ -295,7 +293,7 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: larger;
+  font-size: 1.5rem;
   font-weight: 600;
   cursor: pointer;
   transform: scale(0.8);
