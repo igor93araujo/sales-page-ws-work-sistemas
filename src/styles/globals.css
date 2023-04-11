@@ -66,6 +66,7 @@ header {
 
   .admIcon:hover {
     transform: scale(1);
+    color: #f2bf00;
   }
 
 aside {
@@ -131,6 +132,18 @@ footer {
   align-items: center;
   justify-content: center;
   width: auto;
+}
+
+footer a {
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  font-weight: 900;
+  transition: 0.5s;
+}
+
+footer a:hover {
+  color: #fbd23e;
 }
 
 .bannerProduct {
