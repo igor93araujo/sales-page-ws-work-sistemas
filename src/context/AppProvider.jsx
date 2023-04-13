@@ -14,20 +14,30 @@ export function AppProvider({ children }) {
   const [showLogin, setShowLogin] = useState(false);
 
   const [ showAddProduct, setShowAddProduct ] = useState(false)
-  const [ productName, setProductName ] = useState('')
+/*   const [ productName, setProductName ] = useState('')
   const [ productPrice, setProductPrice ] = useState('')
-  const [editingProduct, setEditingProduct] = useState(null)
+  const [editingProduct, setEditingProduct] = useState(null) */
+  const [showCategories, setShowCategories] = useState(false);
+
+  const [showMenu, setShowMenu] = useState(false);
 
   const getCategoriesList = async() => {
-    const categories = await getCategories();
-    setCategories(categories);
+    try {
+      const categoriesList = await getCategories();
+      setCategories(categoriesList);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const getProductsList = async() => {
-    const products = await getProductsFromCategory(productId);
-    setProducts(products);
-    console.log(products);
-    setLoading(false);
+    try {
+      const productsList = await getProductsFromCategory(productId);
+      setProducts(productsList);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
 
@@ -52,7 +62,11 @@ export function AppProvider({ children }) {
       bannerItem, 
       setBannerItem,
       showLogin,
-      setShowLogin
+      setShowLogin,
+      setShowCategories,
+      showCategories,
+      showMenu,
+      setShowMenu,
     }),
     [
       products,
@@ -69,7 +83,11 @@ export function AppProvider({ children }) {
       bannerItem, 
       setBannerItem,
       showLogin,
-      setShowLogin
+      setShowLogin,
+      setShowCategories,
+      showCategories,
+      showMenu,
+      setShowMenu,
     ],
   );
 

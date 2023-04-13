@@ -5,16 +5,19 @@ import { useContext } from 'react';
 
 export default function Categories() {
 
-  const { setProducts, setLoading, categories } = useContext(AppContext);
+  const { setProducts, setLoading, categories, showCategories, setShowCategories } = useContext(AppContext);
  
   const showProducts = async (id) => {
+    setShowCategories(false)
     const products = await getProductsFromCategory(id)
     setProducts(products)
     setLoading(false)
   };
   
   return (
-    <aside>
+    <aside className={
+      showCategories ? 'categories' : 'hiddenCategories'
+    }>
           <h2>Categorias</h2>
           <ul>
             {
